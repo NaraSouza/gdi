@@ -16,17 +16,17 @@ public class UserProfile {
     private JLabel bairroLabel;
     private JLabel cidadeLabel;
     private JLabel estadoLabel;
-    private static JLabel fotoLabel;
-    private static JLabel nome_pessoa;
-    private static JLabel cpf_pessoa;
-    private static JLabel sexo_pessoa;
-    private static JLabel data_nascimento_pessoa;
-    private static JLabel email_pessoa;
-    private static JLabel rua_pessoa;
-    private static JLabel numero_pessoa;
-    private static JLabel bairro_pessoa;
-    private static JLabel cidade_pessoa;
-    private static JLabel estado_pessoa;
+    private JLabel fotoLabel;
+    private JLabel nome_pessoa;
+    private JLabel cpf_pessoa;
+    private JLabel sexo_pessoa;
+    private JLabel data_nascimento_pessoa;
+    private JLabel email_pessoa;
+    private JLabel rua_pessoa;
+    private JLabel numero_pessoa;
+    private JLabel bairro_pessoa;
+    private JLabel cidade_pessoa;
+    private JLabel estado_pessoa;
 
     public UserProfile() {
 
@@ -46,7 +46,7 @@ public class UserProfile {
      * @param cidade cidade da pessoa
      * @param estado estado da pessoa
      */
-    public static void showProfile(String nome, Icon fotoIcon, String cpf, String sexo, String data_nascimento,
+    public void showProfile(String nome, Icon fotoIcon, String cpf, String sexo, String data_nascimento,
                                    String email, String rua, int numero, String bairro, String cidade, String estado) {
 
         nome_pessoa.setText(nome);

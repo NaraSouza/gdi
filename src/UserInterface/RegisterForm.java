@@ -16,7 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegisterForm {
-    Blob foto;
+
+    UserProfile userProfile;
 
     private JPanel cadastro;
     private JLabel nomeLabel;
@@ -30,6 +31,7 @@ public class RegisterForm {
     private JLabel cidadeLabel;
     private JLabel estadoLabel;
     private JLabel fotoLabel;
+    private Blob foto;
     private JTextField ruaTextField;
     private JTextField numeroTextField;
     private JTextField bairroTextField;
@@ -45,6 +47,8 @@ public class RegisterForm {
     private JButton enviarButton;
 
     public RegisterForm() {
+        userProfile = new UserProfile();
+
         foto = null;
 
         //Listener do botão para carregar foto
@@ -115,7 +119,7 @@ public class RegisterForm {
                 String estado = resultSet.getString("estado_pessoa");
 
                 //Exibe as informações de perfil
-                UserProfile.showProfile(nome, fotoIcon, cpf, sexo, data_nascimento, email, rua, numero, bairro, cidade, estado);
+                userProfile.showProfile(nome, fotoIcon, cpf, sexo, data_nascimento, email, rua, numero, bairro, cidade, estado);
             }
         } catch (SQLException e) {
             e.printStackTrace();
