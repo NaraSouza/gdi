@@ -1,6 +1,8 @@
 package DBCommunication;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.*;
 
 public class DataBaseCommunication {
@@ -27,13 +29,26 @@ public class DataBaseCommunication {
 
             //Executando a query
             statement = connection.createStatement();
-            File foto_pessoa = new File("/home/CIN/nsa2/IdeaProjects/gdi/src/foto.png");
+            File foto_pessoa = new File("./src/foto.png");
             Date data_nascimento_pessoa = new Date(06/06/1996);
-            String sql = "INSERT INTO PESSOA VALUES('333.333.333-33', 'Danila Freitas', 'M', " + data_nascimento_pessoa +
-                    ", 'Rua Aquarela', '420', 'Arco-íris', 'Colorida', 'Pernambuco', 'danila.freitas@email.com', " +
-                    foto_pessoa + "); SELECT * FROM PESSOA;";
-            ResultSet rs = statement.executeQuery(sql);
-
+            InputStream inputStream = new FileInputStream(foto_pessoa);
+            //String sql = "INSERT INTO PESSOA " + "VALUES('333.333.333-33', 'Danila Freitas', 'M', " + data_nascimento_pessoa +", 'Rua Aquarela', '420', 'Arco-íris', 'Colorida', 'Pernambuco', 'danila.freitas' ,  + inputStream )";
+            String sql2 = "INSERT INTO PESSOA (CPF_PESSOA, NOME_PESSOA, SEXO_PESSOA, DATA_NASCIMENTO_PESSOA, RUA_PESSOA, NUMERO_PESSOA, BAIRRO_PESSOA, CIDADE_PESSOA, ESTADO_PESSOA, EMAIL_PESSOA, FOTO_PESSOA) values (?, ?, ?, ?, ?, ? ,? ,?, ?, ?, ?)";
+            PreparedStatement statement2 = connection.prepareStatement(sql2);
+            statement2.setString(1, "750.750.000-00");
+            statement2.setString(2, "Dele");
+            statement2.setString(3, "H");
+            statement2.setDate(4, data_nascimento_pessoa);
+            statement2.setString(5, "asd");
+            statement2.setString(6, "420");
+            statement2.setString(7, "Arco");
+            statement2.setString(8, "colori");
+            statement2.setString(9, "pe");
+            statement2.setString(10, "gmail");
+            statement2.setBlob(11, inputStream);
+            //statement2.executeUpdate();
+            ResultSet rs = statement2.executeQuery();
+            //statement2.executeUpdate();
             //Extraindo dados do ResultSet
             while(rs.next()){
                 //Retrieve by column name
