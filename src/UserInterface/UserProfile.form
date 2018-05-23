@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="UserInterface.UserProfile">
+  <grid id="27dc6" binding="profile" layout-manager="GridLayoutManager" row-count="10" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="10" right="10"/>
+    <constraints>
+      <xy x="20" y="20" width="411" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none" title="Perfil de Pessoa"/>
+    <children>
+      <grid id="f5b32" binding="fotoPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="80" height="100"/>
+            <preferred-size width="80" height="100"/>
+            <maximum-size width="80" height="100"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="line" title="Foto" title-position="5"/>
+        <children>
+          <component id="266f9" class="javax.swing.JLabel" binding="fotoLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="522ce" class="javax.swing.JLabel" binding="nomeLabel">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Nome"/>
+        </properties>
+      </component>
+      <component id="3f9b4" class="javax.swing.JLabel" binding="cpfLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="CPF"/>
+        </properties>
+      </component>
+      <component id="4d31" class="javax.swing.JLabel" binding="sexoLabel">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Sexo"/>
+        </properties>
+      </component>
+      <component id="691a9" class="javax.swing.JLabel" binding="dataNascLabel">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Data de Nascimento"/>
+        </properties>
+      </component>
+      <component id="cbc63" class="javax.swing.JLabel" binding="emailLabel">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="E-mail"/>
+        </properties>
+      </component>
+      <component id="df041" class="javax.swing.JLabel" binding="enderecoLabel">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Endereço"/>
+        </properties>
+      </component>
+      <component id="e807" class="javax.swing.JLabel" binding="ruaLabel">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Rua"/>
+        </properties>
+      </component>
+      <component id="bf7a5" class="javax.swing.JLabel" binding="numeroLabel">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-4473925"/>
+          <text value="Número"/>
+        </properties>
+      </component>
+      <component id="ad361" class="javax.swing.JLabel" binding="bairroLabel">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Bairro"/>
+        </properties>
+      </component>
+      <component id="14c23" class="javax.swing.JLabel" binding="cidadeLabel">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Cidade"/>
+        </properties>
+      </component>
+      <component id="dcfbd" class="javax.swing.JLabel" binding="estadoLabel">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Estado"/>
+        </properties>
+      </component>
+      <component id="57062" class="javax.swing.JLabel" binding="nome_pessoa">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-10460993"/>
+          <text value="Nome"/>
+        </properties>
+      </component>
+      <component id="f5259" class="javax.swing.JLabel" binding="cpf_pessoa">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-10460993"/>
+          <text value="CPF"/>
+        </properties>
+      </component>
+      <component id="c60a6" class="javax.swing.JLabel" binding="sexo_pessoa">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-10460993"/>
+          <text value="Sexo"/>
+        </properties>
+      </component>
+      <component id="eb1fc" class="javax.swing.JLabel" binding="data_nascimento_pessoa">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-10460993"/>
+          <text value="00/00/0000"/>
+        </properties>
+      </component>
+      <component id="b298" class="javax.swing.JLabel" binding="email_pessoa">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-10460993"/>
+          <text value="email@email.com"/>
+        </properties>
+      </component>
+      <component id="e96cb" class="javax.swing.JLabel" binding="bairro_pessoa">
+        <constraints>
+          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-10460993"/>
+          <text value="Bairro"/>
+        </properties>
+      </component>
+      <component id="73abe" class="javax.swing.JLabel" binding="cidade_pessoa">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-10460993"/>
+          <text value="Cidade"/>
+        </properties>
+      </component>
+      <component id="9160d" class="javax.swing.JLabel" binding="estado_pessoa">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-10460993"/>
+          <text value="Estado"/>
+        </properties>
+      </component>
+      <component id="565cd" class="javax.swing.JLabel" binding="rua_pessoa">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-10460993"/>
+          <text value="Rua"/>
+        </properties>
+      </component>
+      <component id="afdfc" class="javax.swing.JLabel" binding="numero_pessoa">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-10460993"/>
+          <text value="Número"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
