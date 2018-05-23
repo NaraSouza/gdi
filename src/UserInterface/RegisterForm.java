@@ -8,8 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.sql.Blob;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -48,7 +47,6 @@ public class RegisterForm {
 
     public RegisterForm() {
         userProfile = new UserProfile();
-
         foto = null;
 
         //Listener do botão para carregar foto
@@ -56,8 +54,26 @@ public class RegisterForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //abre diretório para usuário selecionar foto
-                //TODO o arquivo selecionado deve ser colocado na variável foto
-                foto = null;
+                JFileChooser fileChooser = new JFileChooser();
+                int returnVal = fileChooser.showOpenDialog(carregarFotoButton);
+
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    File file = fileChooser.getSelectedFile();
+                    // tratando arquivo selecionado
+                    byte[] fileContent = new byte[(int) file.length()];
+                    try {
+                        FileInputStream fileInputStream = new FileInputStream(file);
+                        fileInputStream.read(fileContent);
+                        fileInputStream.close();
+                        //coloca o arquivo selecionado no Blob foto
+                        foto.setBytes(0, fileContent);
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+                    System.out.println("File access cancelled by user.");
+                    foto = null;
+                }
             }
         });
 

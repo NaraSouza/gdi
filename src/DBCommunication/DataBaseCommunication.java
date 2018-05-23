@@ -6,7 +6,7 @@ import java.sql.*;
 public class DataBaseCommunication {
     // Driver JDBC e URL do banco de dados
     static final String JDBC_DRIVER = "oracle.jdbc.OracleDriver";
-    static final String DB_URL = "jdbc:oracle:thin:@itapissuma.cin.ufpe.br:1521:dbdisc";
+    static final String DB_URL = "jdbc:oracle:thin:@oracle11g.cin.ufpe.br:1521:Instance01";
 
     // Credenciais da equipe
     static final String USER = "g181if685cc_eq01";
