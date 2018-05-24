@@ -15,10 +15,9 @@ public class DataBaseCommunication {
     static final String PASSWORD = "qkcmjnwz";
 
     //TODO remover esse main assim que o teste de envio de informações pro DB for feito
-    // ficará apenas o método, criarPessoa(), que é chamado pela interface do usuário
     public static void main(String[] args) {
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement statement = null;
 
         try {
             //Registrando o driver
@@ -27,28 +26,38 @@ public class DataBaseCommunication {
             //Abrindo a conexão
             connection = DriverManager.getConnection(DB_URL,USER, PASSWORD);
 
-            //Executando a query
-            statement = connection.createStatement();
+            //tratamento do arquivo
+            Blob fotoBlob = null;
             File foto_pessoa = new File("./src/foto.png");
+            byte[] fileContent = new byte[(int) foto_pessoa.length()];
+            FileInputStream fileInputStream = new FileInputStream(foto_pessoa);
+            fileInputStream.read(fileContent);
+            fileInputStream.close();
+            fotoBlob.setBytes(0, fileContent);
+
             Date data_nascimento_pessoa = new Date(06/06/1996);
-            InputStream inputStream = new FileInputStream(foto_pessoa);
-            //String sql = "INSERT INTO PESSOA " + "VALUES('333.333.333-33', 'Danila Freitas', 'M', " + data_nascimento_pessoa +", 'Rua Aquarela', '420', 'Arco-íris', 'Colorida', 'Pernambuco', 'danila.freitas' ,  + inputStream )";
-            String sql2 = "INSERT INTO PESSOA (CPF_PESSOA, NOME_PESSOA, SEXO_PESSOA, DATA_NASCIMENTO_PESSOA, RUA_PESSOA, NUMERO_PESSOA, BAIRRO_PESSOA, CIDADE_PESSOA, ESTADO_PESSOA, EMAIL_PESSOA, FOTO_PESSOA) values (?, ?, ?, ?, ?, ? ,? ,?, ?, ?, ?)";
-            PreparedStatement statement2 = connection.prepareStatement(sql2);
-            statement2.setString(1, "750.750.000-00");
-            statement2.setString(2, "Dele");
-            statement2.setString(3, "H");
-            statement2.setDate(4, data_nascimento_pessoa);
-            statement2.setString(5, "asd");
-            statement2.setString(6, "420");
-            statement2.setString(7, "Arco");
-            statement2.setString(8, "colori");
-            statement2.setString(9, "pe");
-            statement2.setString(10, "gmail");
-            statement2.setBlob(11, inputStream);
-            //statement2.executeUpdate();
-            ResultSet rs = statement2.executeQuery();
-            //statement2.executeUpdate();
+
+            //Executando a query
+            String sql2 = "INSERT INTO PESSOA (CPF_PESSOA, NOME_PESSOA, SEXO_PESSOA, DATA_NASCIMENTO_PESSOA, RUA_PESSOA," +
+                    " NUMERO_PESSOA, BAIRRO_PESSOA, CIDADE_PESSOA, ESTADO_PESSOA, EMAIL_PESSOA, FOTO_PESSOA) values " +
+                    "(?, ?, ?, ?, ?, ? ,? ,?, ?, ?, ?); SELECT * FROM PESSOA WHERE CPF_PESSOA = ?;";
+
+            statement = connection.prepareStatement(sql2);
+            statement.setString(1, "750.750.000-00");
+            statement.setString(2, "Dele");
+            statement.setString(3, "H");
+            statement.setDate(4, data_nascimento_pessoa);
+            statement.setString(5, "asd");
+            statement.setString(6, "420");
+            statement.setString(7, "Arco");
+            statement.setString(8, "colori");
+            statement.setString(9, "pe");
+            statement.setString(10, "gmail");
+            statement.setBlob(11, fotoBlob);
+            statement.setString(12, "750.750.000-00");
+
+            ResultSet rs = statement.executeQuery();
+
             //Extraindo dados do ResultSet
             while(rs.next()){
                 //Retrieve by column name
@@ -121,7 +130,7 @@ public class DataBaseCommunication {
                                          int numero, String bairro, String cidade, String estado, String email, Blob foto) {
 
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement statement = null;
         ResultSet resultSet = null;
 
         try {
@@ -132,13 +141,30 @@ public class DataBaseCommunication {
             connection = DriverManager.getConnection(DB_URL,USER, PASSWORD);
 
             //Executando a query
-            statement = connection.createStatement();
-            String sql = "INSERT INTO PESSOA VALUES(" + cpf + ", "+ nome + ", "+ sexo + ", "+ dataNascimento + ", " +
-                    rua + ", " + numero + ", " + bairro + ", " + cidade + ", " + estado + ", " + email + ", " +
-                    foto + "); SELECT * FROM PESSOA WHERE cpf_pessoa = " + cpf + ";";
+            String sql = "INSERT INTO PESSOA (CPF_PESSOA, NOME_PESSOA, SEXO_PESSOA, DATA_NASCIMENTO_PESSOA, RUA_PESSOA," +
+                    " NUMERO_PESSOA, BAIRRO_PESSOA, CIDADE_PESSOA, ESTADO_PESSOA, EMAIL_PESSOA, FOTO_PESSOA) VALUES " +
+                    "(?, ?, ?, ?, ?, ? ,? ,?, ?, ?, ?); SELECT * FROM PESSOA WHERE CPF_PESSOA = ?;";
+
+            statement = connection.prepareStatement(sql);
+
+            statement.setString(1, cpf);
+            statement.setString(2, nome);
+            statement.setString(3, sexo);
+            statement.setDate(4, dataNascimento);
+            statement.setString(5, rua);
+            statement.setInt(6, numero);
+            statement.setString(7, bairro);
+            statement.setString(8, cidade);
+            statement.setString(9, estado);
+            statement.setString(10, email);
+            statement.setBlob(11, foto);
+            statement.setString(12, cpf);
 
             resultSet = statement.executeQuery(sql);
 
+            resultSet.close();
+            statement.close();
+            connection.close();
         }catch(SQLException se){
             //Handle errors for JDBC
             se.printStackTrace();
@@ -158,6 +184,7 @@ public class DataBaseCommunication {
                 se.printStackTrace();
             }
         }
+
         //retorna o ResultSet com as informações da pessoa criada
         return resultSet;
     }
