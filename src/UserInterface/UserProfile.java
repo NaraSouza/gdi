@@ -3,7 +3,7 @@ package UserInterface;
 import javax.swing.*;
 
 public class UserProfile {
-    private JPanel profile;
+    public JPanel profile;
     private JPanel fotoPanel;
     private JLabel nomeLabel;
     private JLabel cpfLabel;

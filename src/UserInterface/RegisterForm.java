@@ -18,7 +18,7 @@ public class RegisterForm {
 
     UserProfile userProfile;
 
-    private JPanel cadastro;
+    public  JPanel cadastro;
     private JLabel nomeLabel;
     private JLabel emailLabel;
     private JLabel sexoLabel;
@@ -88,8 +88,15 @@ public class RegisterForm {
                     sexo = "M";
                 }
 
-                Date data_nascimento = new Date(Long.parseLong(dataNascTextField.getText()));
-                int numero = Integer.parseInt(numeroTextField.getText());
+                Date data_nascimento = null;
+                if(!dataNascTextField.getText().isEmpty()) {
+                    data_nascimento = new Date(Long.parseLong(dataNascTextField.getText()));
+                }
+
+                int numero = 0;
+                if(!numeroTextField.getText().isEmpty()) {
+                    numero = Integer.parseInt(numeroTextField.getText());
+                }
 
                 //envia informações para o DB
                 ResultSet resultSet = DataBaseCommunication.criarPessoa(cpfTextField.getText(), nomeTextField.getText(),
@@ -99,6 +106,14 @@ public class RegisterForm {
                 showInfo(resultSet);
             }
         });
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Cadastro");
+        frame.setContentPane(new RegisterForm().cadastro);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }
 
     /**
@@ -136,6 +151,7 @@ public class RegisterForm {
 
                 //Exibe as informações de perfil
                 userProfile.showProfile(nome, fotoIcon, cpf, sexo, data_nascimento, email, rua, numero, bairro, cidade, estado);
+                userProfile.profile.setVisible(true);
             }
         } catch (SQLException e) {
             e.printStackTrace();
